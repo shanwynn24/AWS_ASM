@@ -113,9 +113,9 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="text-align:center ;">
+                <div class="container-fluid" >
 
-                    <h1 class="h3 mb-2 text-gray-800">Employee Performance Evauation Form</h1>
+                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center ;">Employee Performance Evauation Form</h1>
 
                     <!-- Content Row -->
                     <div class="row justify-content-center">
@@ -125,11 +125,11 @@
                                 
                                 <div class="form-group">
                                 <label>Supervisor Name</label>
-                                <input type="text" name="name" class="form-control" >
+                                <input type="text" name="name" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                <label>Employee Name</label>
+                                <label style="">Employee Name</label>
                                 <input type="text" name="name" class="form-control" required>
                                 </div>
 
@@ -151,15 +151,96 @@
                                     <h2>Evaluation of Skills</h2>
                                 </div>
 
-                                
+                                <div class="form-group">
+                                    <label>Employee's performance:</label><br>
+                                    <label>Knowledge/Skill Set:</label>
+                                    <select name="knowledge-SkillSet" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select> <br><br>  
 
+                                    <label>Quality of Work:</label>
+                                    <select name="qualityofWork" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br><br> 
+
+                                    <label>Attitude:</label> 
+                                    <select name="attitude" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br><br>   
+
+                                    <label>Productivity and Efficiency:</label>
+                                    <select name="productivity" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br><br> 
+
+                                    <label>Reliability and Dependability:</label>
+                                    <select name="reliability" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br><br>   
+
+                                    <label>Collaboration and Teamwork:</label> 
+                                    <select name="Teamwork" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br><br> 
+
+                                    <label>Communication:</label> 
+                                    <select name="Communication" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select><br> <br>  
+
+                                    <label>Leadership:</label> 
+                                    <select name="Leadership" style="width:100%;max-width:155px;">
+                                        <option value="">--</option>
+                                        <option value="Poor">Poor</option>
+                                        <option value="Below Average">Below Average</option>
+                                        <option value="Average">Average</option>
+                                        <option value="Above Average">Above Average</option>
+                                        <option value="Excellent">Excellent</option>
+                                    </select>
+                                </div>
+                                
                                 <div class="form-group">
                                 <label>Growth Plan/List new roles and responsibilities and/or improvement goals.</label>
                                 <textarea rows="4" cols="50" name="comment" form="usrform" class="form-control " required></textarea>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info" name="update">Update</button>
+                                    <button type="submit" class="btn btn-info" name="update">Submit</button>
                                 </div>
                                    
                                 
