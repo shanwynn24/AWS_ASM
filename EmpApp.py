@@ -23,7 +23,7 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('viewEmployee.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -79,7 +79,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template('viewEmployee.html', name=emp_name)
 
 
 if __name__ == '__main__':
