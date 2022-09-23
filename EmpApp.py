@@ -4,7 +4,7 @@ import os
 import boto3
 from config import *
 
-app = Flask(__name__,template_folder="aws_asm")
+app = Flask(__name__,template_folder="aws_asm",static_folder="static")
 
 bucket = custombucket
 region = customregion
