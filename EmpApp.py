@@ -20,15 +20,36 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee'
 
-
+#rmb change the home dir to dash 
 @app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('viewEmployee.html')
 
+#chk possible to dupplicate with upsite that ass hold
+@app.route("/viewEmployee.html", methods=['GET', 'POST'])
+def viewEmployee():
+    return render_template('viewEmployee.html')
 
-@app.route("/about", methods=['POST'])
-def about():
-    return render_template('www.intellipaat.com')
+@app.route("/index.html", methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+    
+@app.route("/editEmployee.html", methods=['GET', 'POST'])
+def editEmployee():
+    return render_template('editEmployee.html')
+
+@app.route("/leave.html", methods=['GET', 'POST'])
+def leave():
+    return render_template('leave.html')
+
+@app.route("/payroll.html", methods=['GET', 'POST'])
+def payroll():
+    return render_template('payroll.html')
+
+@app.route("/performance.html", methods=['GET', 'POST'])
+def performance():
+    return render_template('performance.html')
+
 
 
 @app.route("/addemp", methods=['POST'])
