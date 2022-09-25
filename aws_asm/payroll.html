@@ -134,48 +134,23 @@
                                 </div>
                                     
                                 <div class="form-group">
-                                <label>Basic Salary</label>
-                                <input type="text" name="basic" class="form-control" required>
+                                <label>Rate Per Hour</label>
+                                <input type="text" name="rate" class="form-control" required>
                                 </div>
     
                                 <div class="form-group">
-                                <label>Allowance with EPF</label>
-                                <input type="text" name="epf" class="form-control" required>
+                                <label>Hour Per Day</label>
+                                <input type="text" name="hour" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                <label>Allowance without EPF</label>
-                                <input type="text" name="xepf" class="form-control" required>
+                                <label>Number of days worked</label>
+                                <input type="text" name="dayWorked" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                <label>Allowance without SOCSO</label>
-                                <input type="text" name="socso" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Allowance without PCB</label>
-                                <input type="text" name="pcb" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Overtime</label>
-                                <input type="text" name="overtime" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Bonus</label>
-                                <input type="text" name="bonus" class="form-control " required>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Deduction</label>
-                                <input type="text" name="medical" class="form-control " required>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Other</label>
-                                <input type="text" name="other" class="form-control " required>
+                                <h4><b>GROSS SALARY</b></h4>
+                                <input type="text" name="gross" class="form-control" required>
                                 </div>
 
                                 <!-- Divider -->
@@ -183,27 +158,50 @@
 
                                 <!-- Heading -->
                                 <div class="sidebar-heading">
-                                    <h2>Details of Leave</h2>
+                                    <h2>DEDUCTION OF SALARY</h2>
                                 </div>
 
                                 <div class="form-group">
-                                <label>Leave Start</label>
-                                <input type="date" id="leaveStart" name="leaveStart" class="form-control " required>
+                                <label>TAX 15% of Monthly Wage</label>
+                                <input type="text" name="tax" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                <label>Philhealth 5%</label>
+                                <input type="text" name="philhealth" class="form-control" required>
+                                </div>
+    
+                                <div class="form-group">
+                                <label>SSS 2%</label>
+                                <input type="text" name="sss" class="form-control " required>
+                                </div>
+
+                                <div class="form-group">
+                                <h4><b>TOTAl DEDUCTION</b></h4>
+                                <input type="text" name="totalDeduction" class="form-control " required>
+                                </div>
+
+                                <!-- Divider -->
+                                <hr class="sidebar-divider">
+
+                                <!-- Heading -->
+                                <div class="sidebar-heading">
+                                    <h2>TOTAL OF NET SALARY</h2>
+                                </div>
+
+                                <div class="form-group">
+                                <label>Gross Salary</label>
+                                <input type="text" name="gross" class="form-control " required>
+                                </div>
+
+                                <div class="form-group">
+                                <label>Deduction</label>
+                                <input type="text" id="totalDeduction" class="form-control " required>
                                 </div>
                                 
                                 <div class="form-group">
-                                <label>Leave End</label>
-                                <input type="date" id="leaveEnd" name="leaveEnd" class="form-control " required>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Reason of Leave</label>
-                                <textarea rows="4" cols="50" name="comment" form="usrform" class="form-control " required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Supporting Document</label>
-                                <input type="file" name="image" id="image" class="form-control" required>
+                                <label>NET SALARY</label>
+                                <input type="text" id="netSalary" class="form-control " required>
                                 </div>
                                 
                                 <div class="form-group">
@@ -240,7 +238,7 @@
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+        <i class="fa-solid fa-angle-up"></i>
     </a>
 
     <!-- Bootstrap core JavaScript-->
