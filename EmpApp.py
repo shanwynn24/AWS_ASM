@@ -50,7 +50,9 @@ def payroll():
 def performance():
     return render_template('performance.html')
 
-
+@app.route("/success.html", methods=['GET', 'POST'])
+def success():
+    return render_template('success.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
