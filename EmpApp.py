@@ -20,19 +20,29 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee'
 
-#rmb change the home dir to dash 
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    return render_template('viewEmployee.html')
+def employee():
+    select_sql = "SELECT * FROM employee"
+    cursor = db_conn.cursor()
+    cursor.execute(select_sql)
+    db_conn.commit()
 
-#chk possible to dupplicate with upsite that ass hold
+    empDB = cursor.fetchall()
+    emp_id = 0
+    
+    for x in empDB:
+        emp_id = x[0]
+
+    return emp_id + 1
+
+
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/index.html", methods=['GET', 'POST'])
+def home():
+    return render_template('index.html')
+
 @app.route("/viewEmployee.html", methods=['GET', 'POST'])
 def viewEmployee():
-    return render_template('viewEmployee.html')
-
-@app.route("/index.html", methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+    return render_template('viewEmployee.html', data = employee())
     
 @app.route("/editEmployee.html", methods=['GET', 'POST'])
 def editEmployee():
@@ -46,7 +56,7 @@ def leave():
 def payroll():
     return render_template('payroll.html')
 
-@app.route("/performance.html", methods=['GET', 'POST'])
+@app.route("/performance", methods=['GET', 'POST'])
 def performance():
     return render_template('performance.html')
 
@@ -54,9 +64,8 @@ def performance():
 def success():
     return render_template('success.html')
 
-@app.route("/addemp", methods=['POST'])
+@app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
-    emp_id = request.form['emp_id']
     name = request.form['name']
     email = request.form['email']
     phone = request.form['phone']
@@ -64,7 +73,7 @@ def AddEmp():
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s,%s)"
+    insert_sql = "INSERT INTO employee (name,email,phone,position,location) VALUES (%s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -72,11 +81,11 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, name, email, phone, position, location))
+        cursor.execute(insert_sql, (name, email, phone, position, location))
         db_conn.commit()
         emp_name = "" + position
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        emp_image_file_name_in_s3 = "emp-id-" + str(employee()) + "_image_file"
         s3 = boto3.resource('s3')
 
         try:
@@ -102,7 +111,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('viewEmployee.html', name=emp_name)
+    return render_template('viewEmployee.html')
 
 
 if __name__ == '__main__':
