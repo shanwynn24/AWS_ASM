@@ -125,45 +125,31 @@
                     <div class="row justify-content-center">
 
                             <div class="form-center">
-                                <form action="" method="POST"  enctype='multipart/form-data'>
+                                <form action="/editEmp" method="POST"  enctype='multipart/form-data'>
                                 
                                 <div class="form-group">
                                   <label>Which Employee ID need to update: </label>
-                                  <input type="text" name="id" class="form-control" >
-                                  <label>New Employee ID: </label>
-                                  <input type="text" name="newID" class="form-control" >
+                                  <input type="text" name="id" class="form-control" required>
+
                                   <label>Name</label>
-                                  <input type="text" name="name" class="form-control">
-                                </div>
-                                    
-                                <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" name="email" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="text" name="phone" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Position</label>
-                                <input type="text" name="pri_skill" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Location</label>
-                                <input type="text" name="location" class="form-control " required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Upload Image</label>
-                                <input type="file" name="image" id="image" class="form-control" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-info" name="update" onclick="window.location.href = 'viewEmployee.html'">Update</button>
-                                </div>
+                                  <input type="text" name="name" class="form-control" required>    
+
+                                  <label>Email</label>
+                                  <input type="text" name="email" class="form-control" required>
+
+                                  <label>Phone Number</label>
+                                  <input type="text" name="phone" class="form-control" required>
+
+                                  <label>Position</label>
+                                  <input type="text" name="position" class="form-control" required>
+
+                                  <label>Location</label>
+                                  <input type="text" name="location" class="form-control " required>
+
+                                  <label>Upload Image</label>
+                                  <input type="file" name="image" id="image" class="form-control" required>
+                                      <button type="submit" class="btn btn-info" name="update">Update</button>
+                                  </div>
                                    
                                 
                             </form>    
