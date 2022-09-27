@@ -40,6 +40,10 @@ def employee():
 def home():
     return render_template('index.html')
 
+@app.route("/profile.html", methods=['GET', 'POST'])
+def profile():
+    return render_template('profile.html')
+
 @app.route("/viewEmployee.html", methods=['GET', 'POST'])
 def viewEmployee():
     return render_template('viewEmployee.html', data = employee())
@@ -56,7 +60,7 @@ def leave():
 def payroll():
     return render_template('payroll.html')
 
-@app.route("/performance", methods=['GET', 'POST'])
+@app.route("/performance.html", methods=['GET', 'POST'])
 def performance():
     return render_template('performance.html')
 
