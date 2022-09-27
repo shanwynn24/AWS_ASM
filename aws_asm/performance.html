@@ -23,6 +23,9 @@
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -122,18 +125,20 @@
                 <div class="container-fluid" >
 
                     <h1 class="h3 mb-2 text-gray-800" style="text-align:center ;">Employee Performance Evauation Form</h1>
-
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>
                     <!-- Content Row -->
-                    <div class="row justify-content-center">
-
-                            <div class="form-center">
-                                <form action="" method="POST"  enctype='multipart/form-data'>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Employee Performance</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                                <form action="/addemp" method="POST" enctype='multipart/form-data'>
+                                <div class="modal-body">
                                 
-                                <div class="form-group">
-                                <label>Supervisor Name</label>
-                                <input type="text" name="name" class="form-control">
-                                </div>
-
                                 <div class="form-group">
                                 <label>Employee Name</label>
                                 <input type="text" name="name" class="form-control" required>
@@ -187,57 +192,7 @@
                                         <option value="Average">Average</option>
                                         <option value="Above Average">Above Average</option>
                                         <option value="Excellent">Excellent</option>
-                                    </select><br><br>   
-
-                                    <label>Productivity and Efficiency:</label>
-                                    <select name="productivity" style="width:100%;max-width:155px;">
-                                        <option value="">--</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Below Average">Below Average</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Above Average">Above Average</option>
-                                        <option value="Excellent">Excellent</option>
-                                    </select><br><br> 
-
-                                    <label>Reliability and Dependability:</label>
-                                    <select name="reliability" style="width:100%;max-width:155px;">
-                                        <option value="">--</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Below Average">Below Average</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Above Average">Above Average</option>
-                                        <option value="Excellent">Excellent</option>
-                                    </select><br><br>   
-
-                                    <label>Collaboration and Teamwork:</label> 
-                                    <select name="Teamwork" style="width:100%;max-width:155px;">
-                                        <option value="">--</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Below Average">Below Average</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Above Average">Above Average</option>
-                                        <option value="Excellent">Excellent</option>
-                                    </select><br><br> 
-
-                                    <label>Communication:</label> 
-                                    <select name="Communication" style="width:100%;max-width:155px;">
-                                        <option value="">--</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Below Average">Below Average</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Above Average">Above Average</option>
-                                        <option value="Excellent">Excellent</option>
-                                    </select><br> <br>  
-
-                                    <label>Leadership:</label> 
-                                    <select name="Leadership" style="width:100%;max-width:155px;">
-                                        <option value="">--</option>
-                                        <option value="Poor">Poor</option>
-                                        <option value="Below Average">Below Average</option>
-                                        <option value="Average">Average</option>
-                                        <option value="Above Average">Above Average</option>
-                                        <option value="Excellent">Excellent</option>
-                                    </select>
+                                    </select><br><br>
                                 </div>
                                 
                                 <div class="form-group">
@@ -252,7 +207,7 @@
                                 
                             </form>    
                             </div>
-                       
+                       </div>
                     </div>
 
                 </div>
@@ -261,15 +216,38 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; XYZ Company 2022</span>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Employee</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Review Date</th>
+                                    <th>Current Salary</th>
+                                    <th>Knowledge/Skill Set</th>
+                                    <th>Quality of Work</th>
+                                    <th>Attitude</th>
+                                    <th>Growth Plan/List new roles and responsibilities and/or improvement goals.</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href=''class='btn btn-danger'>Delete</a></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
+            </div>
 
         </div>
         <!-- End of Content Wrapper -->
