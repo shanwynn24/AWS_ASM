@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>XYZ Company - Edit Employee Information</title>
+    <title>XYZ Company - Profile</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,17 +24,42 @@
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
     
     <style>
-        body{
-            margin: 0;
+        * {
+        box-sizing: border-box;
         }
-        .container{
-            width: 300px;
-            display: flex;
-            align-items: center;
+
+        /* Float four columns side by side */
+        .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
         }
-        .container img{
-            width: 50px;
-            margin-right: 20px;
+
+        /* Remove extra left and right margins, due to padding */
+        .row {margin: 0 -5px;}
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+        }
+
+        /* Style the counter cards */
+        .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
         }
     </style>
 
@@ -130,42 +155,38 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
-                <form method="post" action="">
-                    <div class="container">
-                        <img src="static/img/leejunyan.jpg" style="width:50%"/>
-                        <h2>Lee Jun Yan</h2>
-                        <p>CEO</p>
-                        <p>hi</p>
+                <div class="row justify-content-center">
+                    <div class="column">
+                      <div class="card">
+                        <img src="static/img/leejunyan.jpg" /><br>
+                        <h3>LEE JUN YAN</h3>
+                        <p><b>CEO</b></p>
+                        <p>Responsible for managing a company's overall operations, which include delegating and directing agendas, managing company organizational structure.</p>
+                      </div>
+                    </div>
+                  
+                    <div class="column">
+                      <div class="card">
+                        <img src="static/img/teoshanwynn.jpg"/><br>
+                        <h3>TEO SHAN WYNN</h3>
+                        <p><b>Financial Manager</b></p>
+                        <p>Oversee the financial operations of an organization. She advise on investment plans, monitor the company’s finances and produce financial reports.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="column">
+                      <div class="card">
+                        <img src="static/img/limhanxiong.jpg"/><br>
+                        <h3>LIM HAN XIONG</h3>
+                        <p><b>Sales and Marketing Manager</b></p>
+                        <p>Responsible for leading team of professionals who are involved in the sales and marketing activities of the company. He track market developments.</p>
+                      </div>
                     </div>
 
-                    <div class="container">
-                        <img src="static/img/teoshanwynn.jpg" style="width:50%"/>
-                        <h2>Lee Jun Yan</h2>
-                        <p>CEO</p>
-                        <p>hi</p>
-                    </div>
-
-                    <div class="container">
-                        <img src="static/img/jacksonyee.jpg" style="width:50%"/>
-                        <h2>Lee Jun Yan</h2>
-                        <p>CEO</p>
-                        <p>hi</p>
-                    </div>
-                </form>
-
+                
 
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; XYZ Company 2022</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

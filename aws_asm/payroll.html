@@ -140,81 +140,34 @@
                                 </div>
                                     
                                 <div class="form-group">
-                                <label>Rate Per Hour</label>
-                                <input type="text" name="rate" class="form-control" required>
+                                <label>Payroll month</label>
+                                <input type="month" name="payroll" class="form-control" required>
                                 </div>
     
                                 <div class="form-group">
-                                <label>Hour Per Day</label>
-                                <input type="text" name="hour" class="form-control" required>
+                                <label>Salary (RM)</label>
+                                <input type="text" name="salary" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                <label>Number of days worked</label>
-                                <input type="text" name="dayWorked" class="form-control" required>
+                                <label>Overtime</label>
+                                <input type="text" name="overtime" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                <h4><b>GROSS SALARY</b></h4>
-                                <input type="text" name="gross" class="form-control" required>
-                                </div>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider">
-
-                                <!-- Heading -->
-                                <div class="sidebar-heading">
-                                    <h2>DEDUCTION OF SALARY</h2>
-                                </div>
-
-                                <div class="form-group">
-                                <label>TAX 15% of Monthly Wage</label>
-                                <input type="text" name="tax" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Philhealth 5%</label>
-                                <input type="text" name="philhealth" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>SSS 2%</label>
-                                <input type="text" name="sss" class="form-control " required>
-                                </div>
-
-                                <div class="form-group">
-                                <h4><b>TOTAl DEDUCTION</b></h4>
-                                <input type="text" name="totalDeduction" class="form-control " required>
-                                </div>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider">
-
-                                <!-- Heading -->
-                                <div class="sidebar-heading">
-                                    <h2>TOTAL OF NET SALARY</h2>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Gross Salary</label>
-                                <input type="text" name="gross" class="form-control " required>
-                                </div>
-
-                                <div class="form-group">
-                                <label>Deduction</label>
-                                <input type="text" id="totalDeduction" class="form-control " required>
+                                <label>EPF (%)</label>
+                                <input type="text" name="epf" class="form-control" required>
                                 </div>
                                 
                                 <div class="form-group">
-                                <label>NET SALARY</label>
-                                <input type="text" id="netSalary" class="form-control " required>
+                                <label>SOCSO (%)</label>
+                                <input type="text" name="socso" class="form-control" required>
                                 </div>
-                                
+                                                                
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info" name="update" onclick="window.location.href = 'success.html'">Submit</button>
+                                <button type="submit" class="btn btn-info" name="add" onclick="window.location.href = 'success.html'">Add</button>
                                 </div>
-                                   
-                                
+                                                                   
                             </form>    
                             </div>
                        
