@@ -140,7 +140,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                            <form action="/addemp" method="POST" enctype='multipart/form-data'>
+                            <form action="/viewEmployee.html" method="POST" enctype='multipart/form-data'>
                             <div class="modal-body">
                                 <div class="form-group">
                                 <label>Employee ID</label>
@@ -206,6 +206,19 @@
                                             <th>Image</th>
                                         </tr>
                                     </thead>
+                                    {% for x in open %}
+                                    <tr>
+                                        
+                                        <th>{{x[0]}}</th>
+                                        <th>{{x[1]}}</th>
+                                        <th>{{x[2]}}</th>
+                                        <th>{{x[3]}}</th>
+                                        <th>{{x[4]}}</th>
+                                        <th>{{x[5]}}</th>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                    {{close}}
                                 </table>
                             </div>
                         </div>
