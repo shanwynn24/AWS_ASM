@@ -136,7 +136,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                                <form action="/addemp" method="POST" enctype='multipart/form-data'>
+                                <form action="/leave.html" method="POST" enctype='multipart/form-data'>
                                 <div class="modal-body">
                                 <div class="form-group">
                                   <label>Employee ID</label>
@@ -167,17 +167,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label>Reason of Leave</label>
-                                <textarea rows="4" cols="50" name="comment" form="usrform" class="form-control " required></textarea>
-                                </div>
-
-                                <div class="form-group">
                                 <label>Supporting Document</label>
-                                <input type="file" name="image" id="image" class="form-control" required>
+                                <input type="file" name="empLeave_image_file" id="empLeave_image_file" class="form-control" required>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-info" name="leave" onclick="window.location.href = 'success.html'">Submit</button>
+                                    <button type="submit" class="btn btn-info" name="leave">Submit</button>
                                 </div>
                                 </div>   
                                 
@@ -202,19 +197,26 @@
                                             <th>Name</th>
                                             <th>Leave Start</th>
                                             <th>Leave End</th>
-                                            <th>Reason</th>
                                             <th>Supporting Document</th>
                                         </tr>
                                     </thead>
+                                    {% for x in open %}
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        
+                                        <th>{{x[0]}}</th>
+                                        <th>{{x[1]}}</th>
+                                        <th>{{x[2]}}</th>
+                                        <th>{{x[3]}}</th>
                                         <td><img src='' style='width: 150px; height:150px;'/></td>
-                                        <td><a href=''class='btn btn-danger'>Delete</a></td>
+                                        <td>
+                                        <form action="/delEmpLeave" method="POST" enctype='multipart/form-data'>
+                                            <input type="hidden" name="delItem" value="{{x[0]}}">    
+                                            <button type="submit" class='btn btn-danger'>Delete</button>
+                                        </form>
+                                    </td>
                                     </tr>
+                                    {% endfor %}
+                                    {{close}}
                                 </table>
                             </div>
                         </div>

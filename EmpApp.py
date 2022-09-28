@@ -24,7 +24,7 @@ db_conn = connections.Connection(
 )
 output = {}
 tableEmp = 'employee'
-tableLeave = 'leave'
+tableLeave = 'empLeave'
 tablePRoll = 'payroll'
 tablePFM = 'performance'
 
@@ -77,10 +77,6 @@ def retrivedEmp(empId):
 @app.route("/index.html", methods=['GET', 'POST'])
 def home():
     return render_template('index.html',open= opSQL(tableEmp))
-
-@app.route("/leave.html", methods=['GET', 'POST'])
-def leave():
-    return render_template('leave.html')
 
 @app.route("/payroll.html", methods=['GET', 'POST'])
 def payroll():
@@ -253,10 +249,78 @@ def delEMP():
     db_conn.commit()
 
     cursor.close()
-    print("Record have been delete")
+    print("Employee Record have been delete")
     return render_template('success.html', name = "Delete " + emp_id)
 
+@app.route("/leave.html", methods=['GET', 'POST'])
+def addLeave():
+    try:
+        id = request.form['id']
+        name = request.form['name']
+        leaveStart = request.form['leaveStart']
+        leaveEnd = request.form['leaveEnd']
+        empLeave_image_file = request.files['empLeave_image_file']
 
+        insert_sql = """INSERT INTO empLeave (emp_id,name,leave_start,leave_end) 
+                        VALUES (%s, %s, %s, %s)"""
+        cursor = db_conn.cursor()
+
+        if empLeave_image_file.filename == "":
+            return "Please select a file"
+
+        try:
+
+            cursor.execute(insert_sql, (id, name, leaveStart, leaveEnd))
+            db_conn.commit()
+
+            # Uplaod image file in S3 #
+            emp_image_file_name_in_s3 = "leave_" + id + leaveStart + ".jpg"
+            s3 = boto3.resource('s3')
+
+            try:
+                print("Data inserted in MySQL RDS... uploading image to S3...")
+                s3.Bucket(custombucket).put_object(Key=leavebucket + emp_image_file_name_in_s3, 
+                                                   Body=empLeave_image_file)
+                bucket_location = boto3.client('s3').get_bucket_location(
+                                                     Bucket=custombucket)
+                s3_location = (bucket_location['LocationConstraint'])
+
+                if s3_location is None:
+                    s3_location = ''
+                else:
+                    s3_location = '-' + s3_location
+
+                object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+                    s3_location,
+                    custombucket,
+                    emp_image_file_name_in_s3)
+
+            except Exception as e:
+                return str(e)
+        
+        except:
+            pyautogui.alert("Employee ID didn't exist")
+            return render_template('index.html')
+
+        finally:
+            cursor.close()
+        return render_template('success.html', name = id +" "+ name + "successfully applied")
+    except:
+        return render_template('leave.html',open=opSQL(tableLeave))
+
+@app.route("/delEmpLeave", methods=['GET', 'POST'])
+def delEmpLeave():
+    emp_id = request.form['delItem']
+    
+    delete_sql = "DELETE FROM " + tableLeave + " WHERE emp_id = " + emp_id
+
+    cursor = db_conn.cursor()
+    cursor.execute(delete_sql)
+    db_conn.commit()
+
+    cursor.close()
+    print("Employee Record have been delete")
+    return render_template('success.html', name = "Delete " + emp_id)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
