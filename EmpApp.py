@@ -79,12 +79,6 @@ def calEPF(salary):
 
 def calSocso(salary):
     return float(salary) * 0.05
-# def retrivedImg():
-#    boto3.resource('s3').Bucket(custombucket).Object(custombucket+profilebucket)
-#    file_stream = io.StringIO()
-#    object.download_fileobj(file_stream)
-#    return mpimg.imread(file_stream)
-
 
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index.html", methods=['GET', 'POST'])
