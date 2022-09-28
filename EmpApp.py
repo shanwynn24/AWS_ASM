@@ -151,7 +151,7 @@ def EditEmp():
 
             try:
                 # Uplaod image file in S3 #
-                emp_image_file_name_in_s3 = "emp-id-" + str(id) + "_leave_document.pdf"
+                emp_image_file_name_in_s3 = "emp-id-" + str(id) + "_leave_document.jpg"
                 s3 = boto3.resource('s3')
 
                 try:
@@ -258,7 +258,7 @@ def addLeave():
 
         try:
             # Uplaod image file in S3 #
-            emp_image_file_name_in_s3 = "leave_" + id + leaveStart + ".jpg"
+            emp_image_file_name_in_s3 = "leave_" + id + leaveStart + ".pdf"
             s3 = boto3.resource('s3')
 
             try:
