@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from pymysql import connections
 import boto3
-import pyautogui
+from tkinter import * 
+from tkinter import messagebox
 from config import *
 
 app = Flask(__name__, template_folder="aws_asm", static_folder="static")
@@ -187,7 +188,7 @@ def EditEmp():
                 cursor.close()
 
         else:
-            pyautogui.alert("Employee ID didn't exist")
+            messagebox.showwarning('Warning',"Employee ID didn't exist")
             return render_template('editEmployee.html')
 
         return render_template('success.html')
@@ -281,7 +282,7 @@ def addLeave():
                 return str(e)
 
         except:
-            pyautogui.alert("Employee ID didn't exist")
+            messagebox.showwarning('Warning',"Employee ID didn't exist")
             return render_template('index.html', open=opSQL(tableEmp))
 
         finally:
