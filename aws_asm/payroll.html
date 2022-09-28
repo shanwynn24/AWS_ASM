@@ -137,7 +137,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                                <form action="/addemp" method="POST" enctype='multipart/form-data'>
+                                <form action="/payroll.html" method="POST" enctype='multipart/form-data'>
                                 <div class="modal-body">
                                 <div class="form-group">
                                   <label>Employee ID</label>
@@ -161,21 +161,21 @@
 
                                 <div class="form-group">
                                 <label>Overtime</label>
-                                <input type="text" name="overtime" class="form-control" required>
+                                <input type="text" name="overtime" class="form-control" value="250" readonly>
                                 </div>
 
                                 <div class="form-group">
                                 <label>EPF (%)</label>
-                                <input type="text" name="epf" class="form-control" required>
+                                <input type="text" name="epf" class="form-control" value="11" readonly>
                                 </div>
                                 
                                 <div class="form-group">
                                 <label>SOCSO (%)</label>
-                                <input type="text" name="socso" class="form-control" required>
+                                <input type="text" name="socso" class="form-control" value="5" readonly>
                                 </div>
                                                                 
                                 <div class="form-group">
-                                <button type="submit" class="btn btn-info" name="add" onclick="window.location.href = 'success.html'">Add</button>
+                                <button type="submit" class="btn btn-info" name="add">Add</button>
                                 </div>
                                                                    
                             </form>    
@@ -204,17 +204,19 @@
                                             <th>Total Salary (RM)</th>
                                         </tr>
                                     </thead>
+                                    {% for x in open %}
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><a href=''class='btn btn-danger'>Delete</a></td>
+                                        
+                                        <th>E{{x[0]}}</th>
+                                        <th>{{x[1]}}</th>
+                                        <th>{{x[2]}}</th>
+                                        <th>{{x[3]}}</th>
+                                        <th>250</th>
+                                        <th>11</th>
+                                        <th>5</th>
+                                        <th>{{x[4]}}</th>
                                     </tr>
+                                    {% endfor %}
                                 </table>
                             </div>
                         </div>

@@ -209,13 +209,13 @@
                                     {% for x in open %}
                                     <tr>
                                         
-                                        <th>{{x[0]}}</th>
+                                        <th>E{{x[0]}}</th>
                                         <th>{{x[1]}}</th>
                                         <th>{{x[2]}}</th>
                                         <th>{{x[3]}}</th>
                                         <th>{{x[4]}}</th>
                                         <th>{{x[5]}}</th>
-                                        <td><img src='' style='width: 150px; height:150px;'/></td>
+                                        <td><img src='{{x[6]}}'  style='width: 150px; height:150px;'/></td>
                                         <td>
                                         <form action="/delEmp" method="POST" enctype='multipart/form-data'>
                                             <input type="hidden" name="delItem" value="{{x[0]}}">    

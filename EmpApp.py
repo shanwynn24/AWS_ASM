@@ -66,6 +66,10 @@ def retrivedEmp(empId):
 
     cursor.close()
     return dataExist    
+def calEPF(salary):
+    return float(salary) * 0.11
+def calSocso(salary):
+    return float(salary) * 0.05
 #def retrivedImg():
 #    boto3.resource('s3').Bucket(custombucket).Object(custombucket+profilebucket)
 #    file_stream = io.StringIO()
@@ -78,10 +82,6 @@ def retrivedEmp(empId):
 def home():
     return render_template('index.html',open= opSQL(tableEmp))
 
-@app.route("/payroll.html", methods=['GET', 'POST'])
-def payroll():
-    return render_template('payroll.html')
-
 @app.route("/viewEmployee.html", methods=['GET', 'POST'])
 def AddEmp():
     try:
@@ -92,17 +92,14 @@ def AddEmp():
         location = request.form['location']
         emp_image_file = request.files['emp_image_file']
 
-        insert_sql = """INSERT INTO employee (name,email,phone,position,location) 
-                        VALUES (%s, %s, %s, %s, %s)"""
+        insert_sql = """INSERT INTO employee (name,email,phone,position,location,emp_image_file) 
+                        VALUES (%s, %s, %s, %s, %s,%s)"""
         cursor = db_conn.cursor()
 
         if emp_image_file.filename == "":
             return "Please select a file"
 
         try:
-
-            cursor.execute(insert_sql, (name, email, phone, position, location))
-            db_conn.commit()
             emp_name = "" + position
             # Uplaod image file in S3 #
             emp_image_file_name_in_s3 = "emp-id-" + str(calEmpId()) + "_image_file.jpg"
@@ -112,19 +109,15 @@ def AddEmp():
                 print("Data inserted in MySQL RDS... uploading image to S3...")
                 s3.Bucket(custombucket).put_object(Key=profilebucket + emp_image_file_name_in_s3, 
                                                    Body=emp_image_file)
-                bucket_location = boto3.client('s3').get_bucket_location(
-                                                     Bucket=custombucket)
-                s3_location = (bucket_location['LocationConstraint'])
 
-                if s3_location is None:
-                    s3_location = ''
-                else:
-                    s3_location = '-' + s3_location
-
-                object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
-                    s3_location,
+                object_url = "https://{0}.s3.amazonaws.com/{1}{2}".format(
                     custombucket,
+                    profilebucket,
                     emp_image_file_name_in_s3)
+                print(object_url)
+                cursor.execute(insert_sql, (name, email, phone, position, location,object_url))
+                db_conn.commit()
+
 
             except Exception as e:
                 return str(e)
@@ -321,6 +314,26 @@ def delEmpLeave():
     cursor.close()
     print("Employee Record have been delete")
     return render_template('success.html', name = "Delete " + emp_id)
+
+@app.route("/payroll.html", methods=['GET', 'POST'])
+def payroll():
+    try:
+        emp_id = request.form['id']
+        name = request.form['name']
+        pay_month = request.form['payroll']
+        salary = float(request.form['salary'])
+        total = salary + float(request.form['overtime']) - calEPF(salary) - calSocso(salary)
+
+        insert_sql = """INSERT INTO payroll VALUES (%s, %s, %s, %s, %s)"""
+        cursor = db_conn.cursor()
+        cursor.execute(insert_sql,(emp_id,name,pay_month,salary,total))
+        db_conn.commit()
+
+        cursor.close()
+
+        return render_template('success.html', name = id +" "+ name + "successfully applied")
+    except:
+        return render_template('/payroll.html',open=opSQL(tablePRoll))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
