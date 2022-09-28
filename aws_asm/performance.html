@@ -136,7 +136,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                                <form action="/addemp" method="POST" enctype='multipart/form-data'>
+                                <form action="/performance" method="POST" enctype='multipart/form-data'>
                                 <div class="modal-body">
                                 
                                 <div class="form-group">
@@ -151,7 +151,7 @@
                                     
                                 <div class="form-group">
                                 <label>Current Salary</label>
-                                <input type="text" name="email" class="form-control" required>
+                                <input type="text" name="cSalary" class="form-control" required>
                                 </div>
 
                                 <!-- Divider -->
@@ -193,15 +193,10 @@
                                         <option value="Above Average">Above Average</option>
                                         <option value="Excellent">Excellent</option>
                                     </select><br><br>
-                                </div>
+                                </div>                
                                 
                                 <div class="form-group">
-                                <label>Growth Plan/List new roles and responsibilities and/or improvement goals.</label>
-                                <textarea rows="4" cols="50" name="comment" form="usrform" class="form-control " required></textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-info" name="update" onclick="window.location.href = 'success.html'">Submit</button>
+                                    <button type="submit" class="btn btn-info" name="update">Submit</button>
                                 </div>
                                    
                                 
@@ -231,19 +226,20 @@
                                     <th>Knowledge/Skill Set</th>
                                     <th>Quality of Work</th>
                                     <th>Attitude</th>
-                                    <th>Growth Plan/List new roles and responsibilities and/or improvement goals.</th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href=''class='btn btn-danger'>Delete</a></td>
-                            </tr>
+                            {% for x in open %}
+                             <tr>
+                                 
+                                 <th>{{x[0]}}</th>
+                                 <th>{{x[1]}}</th>
+                                 <th>{{x[2]}}</th>
+                                 <th>{{x[3]}}</th>
+                                 <th>{{x[4]}}</th>
+                                 <th>{{x[5]}}</th>
+                                
+                             </tr>
+                            {% endfor %}
                         </table>
                     </div>
                 </div>

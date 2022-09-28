@@ -180,7 +180,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" onclick="window.location.href = 'success.html'">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
                         </div>
@@ -216,10 +216,14 @@
                                         <th>{{x[4]}}</th>
                                         <th>{{x[5]}}</th>
                                         <td><img src='' style='width: 150px; height:150px;'/></td>
-                                        <td><a href=''class='btn btn-danger'>Delete</a></td>
+                                        <td>
+                                        <form action="/delEmp" method="POST" enctype='multipart/form-data'>
+                                            <input type="hidden" name="delItem" value="{{x[0]}}">    
+                                            <button type="submit" class='btn btn-danger'>Delete</button>
+                                        </form>
+                                    </td>
                                     </tr>
                                     {% endfor %}
-                                    {{close}}
                                 </table>
                             </div>
                         </div>

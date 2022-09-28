@@ -1,4 +1,5 @@
 from re import template
+from sqlite3 import Cursor
 from tkinter.tix import Form
 from urllib import response
 from flask import Flask, render_template, request
@@ -22,17 +23,21 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
-select_sql = "SELECT * FROM employee"
+tableEmp = 'employee'
+tableLeave = 'leave'
+tablePRoll = 'payroll'
+tablePFM = 'performance'
 
-def opSQL():
+select_sql = "SELECT * FROM "
+
+def opSQL(statement):
     cursor = db_conn.cursor()
-    cursor.execute(select_sql)
+    cursor.execute(select_sql + statement)
     db_conn.commit()
     return cursor.fetchall()
 def calEmpId():
     cursor = db_conn.cursor()
-    cursor.execute(select_sql)
+    cursor.execute(select_sql + tableEmp)
     db_conn.commit()
 
     empDB = cursor.fetchall()
@@ -48,7 +53,7 @@ def retrivedEmp(empId):
 
     dataExist = False
     cursor = db_conn.cursor()
-    cursor.execute(select_sql)
+    cursor.execute(select_sql + tableEmp)
     db_conn.commit()
 
     empDB = cursor.fetchall()
@@ -71,7 +76,7 @@ def retrivedEmp(empId):
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index.html", methods=['GET', 'POST'])
 def home():
-    return render_template('index.html',open= opSQL())
+    return render_template('index.html',open= opSQL(tableEmp))
 
 @app.route("/leave.html", methods=['GET', 'POST'])
 def leave():
@@ -80,10 +85,6 @@ def leave():
 @app.route("/payroll.html", methods=['GET', 'POST'])
 def payroll():
     return render_template('payroll.html')
-
-@app.route("/performance.html", methods=['GET', 'POST'])
-def performance():
-    return render_template('performance.html')
 
 @app.route("/viewEmployee.html", methods=['GET', 'POST'])
 def AddEmp():
@@ -138,7 +139,7 @@ def AddEmp():
         print("all modification done...")
         return render_template('success.html', name = emp_name)
     except:
-        return render_template('viewEmployee.html', data = calEmpId(),open= opSQL())
+        return render_template('viewEmployee.html', data = calEmpId(),open= opSQL(tableEmp))
 
 @app.route("/editEmployee.html", methods=['GET', 'POST'])
 def EditEmp():
@@ -215,6 +216,46 @@ def EditEmp():
 @app.route("/profile.html", methods=['GET', 'POST'])
 def profile():
     return render_template('profile.html')
+
+@app.route("/performance.html", methods=['GET', 'POST'])
+def editPerformance():
+    try:
+        name = request.form["name"]
+        reviewDate = request.form['reviewDate']
+        cSalary = request.form['cSalary']
+        knowledge = request.form['knowledge-SkillSet']
+        qow = request.form['qualityofWork']
+        atd = request.form['attitude']
+
+        insert_sql = """
+                     INSERT INTO performance (emp_name,review_date,salary,knowledge,qow,attitude) 
+                     VALUES (%s, %s, %s, %s, %s,%s)
+                     """
+        cursor = db_conn.cursor()
+
+        cursor.execute(insert_sql, (name, reviewDate, cSalary, knowledge, qow,atd))
+        db_conn.commit()
+
+        cursor.close()
+        print("all modification done...")
+        return render_template('success.html', name = name)
+    except:
+        return render_template('/performance.html',open=opSQL(tablePFM))
+
+@app.route("/delEmp", methods=['GET', 'POST'])
+def delEMP():
+    emp_id = request.form['delItem']
+    
+    delete_sql = "DELETE FROM " + tableEmp + " WHERE emp_id = " + emp_id
+
+    cursor = db_conn.cursor()
+    cursor.execute(delete_sql)
+    db_conn.commit()
+
+    cursor.close()
+    print("Record have been delete")
+    return render_template('success.html', name = "Delete " + emp_id)
+
 
 
 if __name__ == '__main__':
