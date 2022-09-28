@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from pymysql import connections
 import boto3
-from tkinter import * 
+import tkinter as tk 
 from tkinter import messagebox
 from config import *
 
