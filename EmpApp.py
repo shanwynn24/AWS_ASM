@@ -248,8 +248,8 @@ def addLeave():
         leaveEnd = request.form['leaveEnd']
         empLeave_image_file = request.files['empLeave_image_file']
 
-        insert_sql = """INSERT INTO empLeave (emp_id,name,leave_start,leave_end) 
-                        VALUES (%s, %s, %s, %s)"""
+        insert_sql = """INSERT INTO empLeave (emp_id,name,leave_start,leave_end,img) 
+                        VALUES (%s, %s, %s, %s,%s)"""
         cursor = db_conn.cursor()
 
         if empLeave_image_file.filename == "":
