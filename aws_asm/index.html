@@ -22,19 +22,19 @@
 
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
-    
+
     <style>
         img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;        
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .background{
+        .background {
             background-color: rgb(237, 237, 237);
         }
     </style>
-   
+
 </head>
 
 <body id="page-top">
@@ -91,7 +91,7 @@
                     <i class="material-icons">tag_faces</i>
                     <span>Performance</span></a>
             </li>
-            
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -118,8 +118,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">LEE JUN YAN</span>
-                                <img class="img-profile rounded-circle"
-                                    src="static/img/jacksonyee.jpg">
+                                <img class="img-profile rounded-circle" src="static/img/jacksonyee.jpg">
                             </a>
                         </li>
                     </ul>
@@ -132,14 +131,14 @@
 
                     <!-- Page Heading -->
                     <div class="background">
-                        <img style="width: 25rem;" src="static/img/group.jpg"/><br>
-                    <h3 class="h3 mb-0 text-gray-800" style="text-align: center;">XYZ Company</h1><br>
+                        <img style="width: 25rem;" src="static/img/group.jpg" /><br>
+                        <h3 class="h3 mb-0 text-gray-800" style="text-align: center;">XYZ Company</h1><br>
                     </div><br>
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
-                                    
+
                     <!-- Content Row -->
                     <div class="row">
 
@@ -149,7 +148,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <a href="viewEmployee.html">Employee List</a></div>
+                                                <a href="viewEmployee.html">Employee List</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +162,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <a href="leave.html">Leave</a></div>
+                                                <a href="leave.html">Leave</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -176,12 +177,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <a href="payroll.html">Payroll</a></div>
+                                                <a href="payroll.html">Payroll</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
@@ -189,71 +191,73 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <a href="performance.html">Performance</a></div>
+                                                <a href="performance.html">Performance</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+
+
+                </div>
+
+                <!-- Content Row -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Employee List</h1>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Employee</h6>
                         </div>
-
-                        
-                    </div>              
-
-                    <!-- Content Row -->
-                    <div class="container-fluid">
-                        
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Employee List</h1>                            
-    
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Employee</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Employee ID</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone Number</th>
-                                                <th>Position</th>
-                                                <th>Location</th>
-                                                <th>Image</th>
-                                            </tr>
-                                        </thead>
-                                        {% for x in open %}
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
                                         <tr>
-                                            
-                                            <th>{{x[0]}}</th>
-                                            <th>{{x[1]}}</th>
-                                            <th>{{x[2]}}</th>
-                                            <th>{{x[3]}}</th>
-                                            <th>{{x[4]}}</th>
-                                            <th>{{x[5]}}</th>
-                                            
+                                            <th>Employee ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                            <th>Position</th>
+                                            <th>Location</th>
+                                            <th>Image</th>
                                         </tr>
-                                        {% endfor %}
-                                        {{close}}
-                                    </table>
-                                </div>
+                                    </thead>
+                                    {% for x in open %}
+                                    <tr>
+
+                                        <th>{{x[0]}}</th>
+                                        <th>{{x[1]}}</th>
+                                        <th>{{x[2]}}</th>
+                                        <th>{{x[3]}}</th>
+                                        <th>{{x[4]}}</th>
+                                        <th>{{x[5]}}</th>
+                                        <td><img src='{{x[6]}}' style='width: 150px; height:150px;' /></td>
+
+                                    </tr>
+                                    {% endfor %}
+                                    {{close}}
+                                </table>
                             </div>
                         </div>
-    
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -262,7 +266,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    
+
     <!-- Bootstrap core JavaScript-->
     <script src="static/vendor/jquery/jquery.min.js"></script>
     <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

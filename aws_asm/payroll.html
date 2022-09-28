@@ -83,7 +83,7 @@
                     <i class="material-icons">tag_faces</i>
                     <span>Performance</span></a>
             </li>
-            
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -110,10 +110,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">LEE JUN YAN</span>
-                                <img class="img-profile rounded-circle"
-                                    src="static/img/jacksonyee.jpg">
+                                <img class="img-profile rounded-circle" src="static/img/jacksonyee.jpg">
                             </a>
-                            
+
                         </li>
 
                     </ul>
@@ -122,114 +121,117 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" >
+                <div class="container-fluid">
 
                     <h1 class="h3 mb-2 text-gray-800" style="text-align:center ;">Payroll Form</h1>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModal">Add</button>
 
                     <!-- Content Row -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Payroll</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Payroll</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <form action="/payroll.html" method="POST" enctype='multipart/form-data'>
-                                <div class="modal-body">
-                                <div class="form-group">
-                                  <label>Employee ID</label>
-                                  <input type="text" name="id" class="form-control" required>
-                                </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Employee ID</label>
+                                            <input type="text" name="id" class="form-control" required>
+                                        </div>
 
-                                <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" required>
-                                </div>
-                                    
-                                <div class="form-group">
-                                <label>Payroll Month</label>
-                                <input type="month" name="payroll" class="form-control" required>
-                                </div>
-    
-                                <div class="form-group">
-                                <label>Salary (RM)</label>
-                                <input type="text" name="salary" class="form-control" required>
-                                </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" name="name" class="form-control" required>
+                                        </div>
 
-                                <div class="form-group">
-                                <label>Overtime</label>
-                                <input type="text" name="overtime" class="form-control" value="250" readonly>
-                                </div>
+                                        <div class="form-group">
+                                            <label>Payroll Month</label>
+                                            <input type="month" name="payroll" class="form-control" required>
+                                        </div>
 
-                                <div class="form-group">
-                                <label>EPF (%)</label>
-                                <input type="text" name="epf" class="form-control" value="11" readonly>
-                                </div>
-                                
-                                <div class="form-group">
-                                <label>SOCSO (%)</label>
-                                <input type="text" name="socso" class="form-control" value="5" readonly>
-                                </div>
-                                                                
-                                <div class="form-group">
-                                <button type="submit" class="btn btn-info" name="add">Add</button>
-                                </div>
-                                                                   
-                            </form>    
-                            </div>
-                            </div>
-                        </div> 
-                    </div>                       
-                    </div>
+                                        <div class="form-group">
+                                            <label>Salary (RM)</label>
+                                            <input type="text" name="salary" class="form-control" required>
+                                        </div>
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Employee</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Employee ID</th>
-                                            <th>Name</th>
-                                            <th>Payroll Month</th>
-                                            <th>Salary (RM)</th>
-                                            <th>Overtime</th>
-                                            <th>EPF (%)</th>
-                                            <th>SOCSO (%)</th>
-                                            <th>Total Salary (RM)</th>
-                                        </tr>
-                                    </thead>
-                                    {% for x in open %}
-                                    <tr>
-                                        
-                                        <th>E{{x[0]}}</th>
-                                        <th>{{x[1]}}</th>
-                                        <th>{{x[2]}}</th>
-                                        <th>{{x[3]}}</th>
-                                        <th>250</th>
-                                        <th>11</th>
-                                        <th>5</th>
-                                        <th>{{x[4]}}</th>
-                                    </tr>
-                                    {% endfor %}
-                                </table>
+                                        <div class="form-group">
+                                            <label>Overtime</label>
+                                            <input type="text" name="overtime" class="form-control" value="250"
+                                                readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>EPF (%)</label>
+                                            <input type="text" name="epf" class="form-control" value="11" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>SOCSO (%)</label>
+                                            <input type="text" name="socso" class="form-control" value="5" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-info" name="add">Add</button>
+                                        </div>
+
+                                </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Employee</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Payroll Month</th>
+                                    <th>Salary (RM)</th>
+                                    <th>Overtime</th>
+                                    <th>EPF (%)</th>
+                                    <th>SOCSO (%)</th>
+                                    <th>Total Salary (RM)</th>
+                                </tr>
+                            </thead>
+                            {% for x in open %}
+                            <tr>
+
+                                <th>E{{x[0]}}</th>
+                                <th>{{x[1]}}</th>
+                                <th>{{x[2]}}</th>
+                                <th>{{x[3]}}</th>
+                                <th>250</th>
+                                <th>11</th>
+                                <th>5</th>
+                                <th>{{x[4]}}</th>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
