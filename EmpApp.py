@@ -143,7 +143,7 @@ def EditEmp():
 
         if retrivedEmp(id) == True:
             modifydata = """UPDATE employee SET name = %s, email = %s ,phone = %s, 
-                            position = %s, location = %s,img = %s WHERE emp_id = %s"""
+                            position = %s, location = %s,emp_image_file = %s WHERE emp_id = %s"""
             cursor = db_conn.cursor()
 
             if emp_image_file.filename == "":
@@ -151,8 +151,7 @@ def EditEmp():
 
             try:
                 # Uplaod image file in S3 #
-                emp_image_file_name_in_s3 = "emp-id-" + \
-                    str(id) + "_leave_document.pdf"
+                emp_image_file_name_in_s3 = "emp-id-" + str(id) + "_leave_document.pdf"
                 s3 = boto3.resource('s3')
 
                 try:
