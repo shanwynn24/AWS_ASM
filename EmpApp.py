@@ -176,7 +176,7 @@ def EditEmp():
                             profilebucket,
                             emp_image_file_name_in_s3)
                         cursor.execute(
-                            modifydata, (name, email, phone, position, location, id, object_url))
+                            modifydata, (name, email, phone, position, location, object_url,id))
                         db_conn.commit()
 
                 except Exception as e:
