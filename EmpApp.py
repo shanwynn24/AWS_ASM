@@ -113,7 +113,6 @@ def AddEmp():
                     custombucket,
                     profilebucket,
                     emp_image_file_name_in_s3)
-                print(object_url)
                 cursor.execute(insert_sql, (name, email, phone,
                                position, location, object_url))
                 db_conn.commit()
