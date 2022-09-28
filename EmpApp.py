@@ -1,10 +1,5 @@
-from re import template
-from sqlite3 import Cursor
-from tkinter.tix import Form
-from urllib import response
 from flask import Flask, render_template, request
 from pymysql import connections
-import os
 import boto3
 import pyautogui
 from config import *
